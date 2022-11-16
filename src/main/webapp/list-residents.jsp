@@ -1,51 +1,52 @@
-<%@ page import="java.util.*" %>
-<%@ page import="com.bladbaez.web.db.ResidentDbUtil" %>
-<%@ page import="java.sql.SQLException" %>
-<%@ page import="com.bladbaez.web.model.Resident" %>
-<%@ page import="java.io.PrintWriter" %>
 <%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix="c" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>City-resident Management App</title>
-    <link type="text/css" rel="stylesheet" href="css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 </head>
 
-<body class="container container-fluid">
-    <div>
-        <h2 class="card card-header align-items-center">City Residents</h2>
+<header>
+    <div class="container"><h1 class="display-3 ">City Residents</h1></div>
 
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="/">App</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/list-residents.jsp">List</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navBarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link text-white" href="/">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/list-residents.jsp">List</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
     </div>
+</header>
 
-    <div class="container-fluid">
-        <table class="card table border-2" style="width:70%" align="center">
+<section>
+
+</section>
+
+<body class="container container-fluid mt-2">
+<div class="container-fluid mt-md-5">
+    <div class="container-lg">
+        <table class="table table-striped">
             <tr>
                 <th>ID</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Date of Birth</th>
-                <th>Town</th>
-                <th>Province</th>
-                <th>Country</th>
+                <th>FIRST NAME</th>
+                <th>LAST NAME</th>
+                <th>DATE OF BIRTH</th>
+                <th>TOWN</th>
+                <th>PROVINCE</th>
+                <th>COUNTRY</th>
+                <th>ACTIONS</th>
             </tr>
 
             <c:forEach var="tempResident" items="${RESIDENT_LIST}">
@@ -68,23 +69,22 @@
                     <td><c:out value="${tempResident.getProvince()}"/></td>
                     <td><c:out value="${tempResident.getCountry()}"/></td>
                     <td>
-                        <a href="${editLink}">Edit</a>
-                        <a href="${deleteLink}">Delete</a>
-<%--                        <a href="${pageContext.request.contextPath}/ResidentControllerServlet?command=load&?id=<c:out value="${tempResident.id}" /> ">Edit</a>--%>
-<%--                        <a href="${pageContext.request.contextPath}/ResidentControllerServlet?command=delete?id=<c:out value="${tempResident.id}" /> ">Delete</a>--%>
+                        <div class="btn btn-secondary"><a class="text-decoration-none text-white" href="${editLink}">EDIT</a></div>
+                        <div class="btn btn-danger">
+                            <a class="text-decoration-none text-white" href="${deleteLink}"
+                            onclick="if(!(confirm('Confirm to delete this resident'))) return false">DELETE</a>
+                        </div>
                     </td>
-                </tr>
+    </tr>
             </c:forEach>
         </table>
     </div>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+</div>
 </body>
 <div align="center">
-    <input value="Add Resident" type="submit" class="btn btn-primary "
+    <input class="btn btn-primary" value="ADD RESIDENT" type="submit"
            onclick="window.location.href='add-resident-form.jsp'; return false;"/>
     <footer>&copy;2022 - City Residents App</footer>
 </div>
-
-
-
 </html>

@@ -1,9 +1,19 @@
 html, body{
     /*margin-left:15%; margin-right:15%;*/
-    padding:0px;
+    padding:0;
     font-family:Verdana, Arial, Helvetica, sans-serif;
     max-width: 500px;
     margin: auto;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    align-items: center;
 }
 
 table {
