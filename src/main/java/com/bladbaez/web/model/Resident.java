@@ -1,21 +1,30 @@
-package com.bladbaez.web.domain;
+package com.bladbaez.web.model;
 
 import java.util.Date;
 
 public class Resident {
     private int id;
-    private String name;
+    private String firstName;
     private String lastName;
     private Date dateOfBirth;
     private String town;
     private String province;
     private String country;
 
-    public Resident(int id, String name, String lastName, Date dateOfBirth, String town, String province, String country) {
+    public Resident(int id, String firstName, String lastName, Date dateOfBirth, String town, String province, String country) {
         this.id = id;
-        this.name = name;
+        this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
+        this.town = town;
+        this.province = province;
+        this.country = country;
+    }
+
+    public Resident(int id, String firstName, String lastName, String town, String province, String country) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.town = town;
         this.province = province;
         this.country = country;
@@ -29,12 +38,12 @@ public class Resident {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLastName() {

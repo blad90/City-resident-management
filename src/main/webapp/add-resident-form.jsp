@@ -3,19 +3,27 @@
 <html>
 <head>
     <title>Add Resident</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
 </head>
 
-<body>
-<div>
-    <h3>City-resident Management App</h3>
-</div>
+    <h3 class="card card-header align-items-center">City Residents</h3>
 
-<div>
+<body class="align-items-center">
+<div class="container container-fluid">
+
+
     <h4>Add Resident</h4>
-    <form action="ResidentControllerServlet" method="POST">
+<div>
+    <form action="/" method="POST">
         <input type="hidden" name="command" value="ADD" />
         <table>
             <tbody>
+            <tr>
+                <td><label>ID:</label></td>
+                <td><input type="hidden" name="id"/></td>
+            </tr>
+
             <tr>
                 <td><label>First name:</label></td>
                 <td><input type="text" name="firstName"/></td>
@@ -28,7 +36,7 @@
 
             <tr>
                 <td><label>Date of Birth:</label></td>
-                <td><input type="text" name="dateOfBirth"/></td>
+                <td><input type="date" name="dateOfBirth"/></td>
             </tr>
 
             <tr>
@@ -48,20 +56,20 @@
 
             <tr>
                 <td><label></label></td>
-                <td><input type="submit" value="Save" class="save"/></td>
+                <td>
+                    <button type="submit" class="btn btn-secondary">Save</button>
+                </td>
             </tr>
             </tbody>
         </table>
     </form>
-
+</div>
     <div>
         <p>
-            <a href="ResidentControllerServlet">Back to List</a>
+            <a href="/">Back to List</a>
         </p>
     </div>
-
 </div>
-
 </body>
 
 </html>
