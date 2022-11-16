@@ -22,6 +22,7 @@ public class ResidentDbUtil {
         System.out.println(residentDbUtil.getResidents());
         ResidentControllerServlet residentControllerServlet = new ResidentControllerServlet();
         residentControllerServlet.init();
+        residentDbUtil.deleteResident("772");
     }
 
     public List<Resident> getResidents() throws SQLException {
@@ -167,16 +168,16 @@ public class ResidentDbUtil {
 
     public void deleteResident(String theResidentId) throws SQLException {
         Connection connection = null;
-        PreparedStatement preparedStatement = null;
+        PreparedStatement statement = null;
         try {
             int residentId = Integer.parseInt(theResidentId);
             connection = DriverManager.getConnection(JDBC_URL, USER, PASSWORD);
             String sql = "DELETE FROM crschema.residents WHERE id=?";
-            preparedStatement.setInt(1, residentId);
-            preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.executeUpdate(sql);
+            statement = connection.prepareStatement(sql);
+            statement.setInt(1,residentId);
+            statement.execute();
         } finally {
-            close(connection,preparedStatement,null);
+            close(connection,statement,null);
         }
     }
 }
