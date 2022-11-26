@@ -15,42 +15,33 @@ public class ResidentDbUtil {
 
     public ResidentDbUtil() {
     }
-
     public static void main(String[] args) throws Exception {
         ResidentDbUtil residentDbUtil = new ResidentDbUtil();
-
         System.out.println(residentDbUtil.getResidents());
         ResidentControllerServlet residentControllerServlet = new ResidentControllerServlet();
         residentControllerServlet.init();
-        residentDbUtil.deleteResident("772");
     }
 
     public List<Resident> getResidents() throws SQLException {
         List<Resident> residents = new ArrayList<>();
 
-        // Step 1: Establish a connection
         System.out.println("Connecting...");
         Connection connection = DriverManager.getConnection(JDBC_URL, USER, PASSWORD);
         Statement stmt = connection.createStatement();
         String sql = "SELECT * FROM crschema.residents";
         ResultSet rs = stmt.executeQuery(sql);
 
-        // process result set
         while (rs.next()) {
-            // retrieve data from result set row
             int id = rs.getInt("id");
             String firstName = rs.getString("first_name");
             String lastName = rs.getString("last_name");
-            Date dateOfBirth = rs.getDate("date_of_birth");
+            String address = rs.getString("address");
             String town = rs.getString("town");
             String province = rs.getString("province");
             String country = rs.getString("country");
-            System.out.println(id + " -- " + firstName + " -- " + lastName + " -- " + dateOfBirth + " -- " + town + " -- " + province + " -- " + country);
 
-            // create new resident object
-            Resident tempResident = new Resident(id, firstName, lastName, dateOfBirth, town, province, country);
+            Resident tempResident = new Resident(id, firstName, lastName, address, town, province, country);
 
-            // add it to the list of students
             residents.add(tempResident);
         }
         close(connection,stmt,null);
@@ -66,14 +57,14 @@ public class ResidentDbUtil {
             connection = DriverManager.getConnection(JDBC_URL, USER, PASSWORD);
 
             String sql = "INSERT INTO crschema.residents "
-                    + "(id, first_name, last_name, date_of_birth, town, province, country) "
+                    + "(id, first_name, last_name, address, town, province, country) "
                     + "values(?, ?, ?, ?, ?, ?, ?)";
             preparedStatement = connection.prepareStatement(sql);
 
             preparedStatement.setInt(1, (int) (Math.random() * 1000));
             preparedStatement.setString(2, theResident.getFirstName());
             preparedStatement.setString(3, theResident.getLastName());
-            preparedStatement.setDate(4, (Date) theResident.getDateOfBirth());
+            preparedStatement.setString(4, theResident.getAddress());
             preparedStatement.setString(5, theResident.getTown());
             preparedStatement.setString(6, theResident.getProvince());
             preparedStatement.setString(7, theResident.getCountry());
@@ -113,14 +104,14 @@ public class ResidentDbUtil {
             connection = DriverManager.getConnection(JDBC_URL, USER, PASSWORD);
 
             String sql = "UPDATE crschema.residents "
-                    + "SET first_name = ?, last_name = ?, date_of_birth=?, "
+                    + "SET first_name = ?, last_name = ?, address=?, "
                     + "town=?, province=?, country=? "
                     + "WHERE id=?";
             preparedStatement = connection.prepareStatement(sql);
 
             preparedStatement.setString(1, resident.getFirstName());
             preparedStatement.setString(2, resident.getLastName());
-            preparedStatement.setDate(3, (Date) resident.getDateOfBirth());
+            preparedStatement.setString(3, resident.getAddress());
             preparedStatement.setString(4, resident.getTown());
             preparedStatement.setString(5, resident.getProvince());
             preparedStatement.setString(6, resident.getCountry());
@@ -153,12 +144,12 @@ public class ResidentDbUtil {
                 int id = resultSet.getInt("id");
                 String firstName = resultSet.getString("first_name");
                 String lastName = resultSet.getString("last_name");
-                Date dateOfBirth = resultSet.getDate("date_of_birth");
+                String address = resultSet.getString("address");
                 String town = resultSet.getString("town");
                 String province = resultSet.getString("province");
                 String country = resultSet.getString("country");
 
-                theResident = new Resident(id, firstName, lastName, dateOfBirth, town, province, country);
+                theResident = new Resident(id, firstName, lastName, address, town, province, country);
             }
             return theResident;
         } finally {

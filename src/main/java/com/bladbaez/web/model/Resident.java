@@ -1,21 +1,19 @@
 package com.bladbaez.web.model;
 
-import java.util.Date;
-
 public class Resident {
     private int id;
     private String firstName;
     private String lastName;
-    private Date dateOfBirth;
+    private String address;
     private String town;
     private String province;
     private String country;
 
-    public Resident(int id, String firstName, String lastName, Date dateOfBirth, String town, String province, String country) {
+    public Resident(int id, String firstName, String lastName, String address, String town, String province, String country) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.dateOfBirth = dateOfBirth;
+        this.address = address;
         this.town = town;
         this.province = province;
         this.country = country;
@@ -54,12 +52,12 @@ public class Resident {
         this.lastName = lastName;
     }
 
-    public Date getDateOfBirth() {
-        return dateOfBirth;
+    public String getAddress() {
+        return address;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getTown() {
