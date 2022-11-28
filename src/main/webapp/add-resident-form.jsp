@@ -12,36 +12,33 @@
 
         <div class="form-group col-md-3">
             <label for="inputFirstName">First Name</label>
-            <input type="text" class="form-control" name="firstName" id="inputFirstName"
-                   value="${THE_RESIDENT.firstName}">
+            <input type="text" class="form-control" name="firstName" id="inputFirstName">
         </div>
 
         <div class="form-group col-md-3">
             <label for="inputLastName">Last Name</label>
-            <input type="text" class="form-control" name="lastName" id="inputLastName" value="${THE_RESIDENT.lastName}">
+            <input type="text" class="form-control" name="lastName" id="inputLastName">
         </div>
 
         <div class="form-group col-md-2">
             <label for="inputAddress">Address: </label>
-            <input type="text" class="form-control" name="address" id="inputAddress" value="${THE_RESIDENT.address}">
+            <input type="text" class="form-control" name="address" id="inputAddress">
         </div>
 
         <div class="form-row">
             <div class="form-group col-md-2">
                 <label for="inputTown">Town</label>
-                <input type="text" class="form-control" name="town" id="inputTown" value="${THE_RESIDENT.town}">
+                <input type="text" class="form-control" name="town" id="inputTown">
             </div>
 
             <div class="form-group col-md-2">
                 <label for="inputProvince">Province</label>
-                <input type="text" class="form-control" name="province" id="inputProvince"
-                       value="${THE_RESIDENT.province}">
+                <input type="text" class="form-control" name="province" id="inputProvince">
             </div>
 
             <div class="form-group col-md-2">
                 <label for="inputCountry">Country</label>
-                <input type="text" class="form-control" name="country" id="inputCountry"
-                       value="${THE_RESIDENT.country}">
+                <input type="text" class="form-control" name="country" id="inputCountry">
             </div>
         </div>
         <div class="d-lg-inline">

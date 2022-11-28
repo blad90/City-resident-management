@@ -91,7 +91,7 @@ public class ResidentControllerServlet extends HttpServlet {
         doGet(request,response);
     }
 
-    private void addResident(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private void addResident(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
 //        int id = Integer.parseInt(request.getParameter("id"));
         String name = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
@@ -102,7 +102,7 @@ public class ResidentControllerServlet extends HttpServlet {
 
         Resident theResident = new Resident((int) (Math.random() * 1000), name,lastName,address,town,province,country);
         residentDbUtil.addResident(theResident);
-        RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("list-residents.jsp");
-        requestDispatcher.forward(request,response);
+
+        listResidents(request,response);
     }
 }

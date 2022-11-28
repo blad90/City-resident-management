@@ -12,7 +12,7 @@
 
 <header>
   <!--  <div class="container"><h1 class="display-3 ">City Residents</h1></div>-->
-  <img src="<c:url value="/img/city-residents-logo.png" />" width="250" height="150" alt="etc"/>
+  <img src="<c:url value="/img/city-residents-logo.png" />" width="130" height="70" alt="etc"/>
 
   <div class="container">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
